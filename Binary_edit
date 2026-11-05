@@ -2,4 +2,34 @@ from PIL import Image
 import numpy as np
 
 def main():
-    
+
+    img = Image.open("painting.png")
+
+    img_data = np.array(img)
+    binary_data = img_data.tobytes()
+
+    print("\n", img_data.shape, "\n")
+
+    with open("original_img.bin", "wb") as file:
+        file.write(binary_data)
+
+    with open("original_img.bin", "rb") as original_file:
+        data = original_file.read()
+
+    with open("copy_img.bin", "wb") as copy_file:
+        copy_file.write(data)
+
+    with open("copy_img.bin", "rb") as file: 
+        data = bytearray(file.read())
+
+    with open("copy_img.bin", "wb") as file:
+        file.write(data)
+
+    modified_data = np.frombuffer(data, dtype=np.uint8).reshape(img_data.shape)
+    modified_data = np.fliplr(modified_data)
+    modified_img = Image.fromarray(modified_data)
+    modified_img.save("imagem_espelhada.png")
+    print("Imagem salva com sucesso!")
+
+if __name__ == "__main__":
+    main()

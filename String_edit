@@ -1,0 +1,2 @@
+arquivo = open("string.txt", "r", encoding='utf-8')
+
