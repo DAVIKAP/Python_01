@@ -1,0 +1,29 @@
+def main():
+    print("Type your sentences. Type 'exit' to finish and save.")
+    sentences = []
+    while True:
+        entering = input("> ")
+        if entering.lower() == "exit":
+            break
+        sentences.append(entering)
+
+    with open("new_file.txt", "w") as file:
+        for sentence in sentences:
+            file.write(sentence + "\n")
+
+    print("File created. Editing data.")
+    data_edited = []
+    with open("new_file.txt", "r") as file:
+        for line in file:
+            data_edited.append(line.strip().upper())
+
+    with open("new_file.txt", 'w') as file:
+        for line in data_edited:
+            file.write(line + "\n")
+    
+    print("File modified with new data.")
+
+
+if __name__ == "__main__":
+    main()
+   

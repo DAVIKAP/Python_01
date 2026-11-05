@@ -1,5 +1,46 @@
 file = open('data1.txt', 'w+')
 
 file.write("one, two, three, testing")
+file.write("\nsecond line content")
+file.write("\nthird line")
 
-content
+file.seek(0)
+
+content = file.read()
+
+print("all file content:")
+print(repr(content), '\n')
+
+file.seek(0)
+
+content_rereading = file.read()
+
+print("reading again")
+print(repr(content_rereading), 'r')
+
+file.close()
+
+file_reopened = open('data1.txt', 'r')
+
+content_reopened = file_reopened.read()
+
+print("all content again:")
+print(repr(content_reopened), '\n')
+
+file_reopened.seek(0)
+content_seek = file_reopened.read()
+print("Todo o conteúdo do arquivo após o Seek")
+print(repr(content_seek))
+
+file_reopened.close()
+
+file_write = open("data1.txt", 'a')
+
+file_write.write("\nAditional content.")
+
+file_write.close()
+
+with open('data1.txt', 'r') as file:
+    for line in file:
+        print(line)
+    print('Fim do arquivo:', file.name)
