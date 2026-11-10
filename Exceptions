@@ -1,0 +1,52 @@
+#Code1
+
+print("Opening a file")
+
+try:
+    open("test1.txt", "r")
+    print("File opened successfully!")
+except FileNotFoundError as error:
+    print("File not found!")
+    print("Description", error)
+
+print("Program finished.")
+
+
+#Code2
+
+print("Opening a file.")
+
+try:
+    open("test2.txt", "r")
+    print("File opened successfully!")
+
+except FileNotFoundError as error:
+    print("There is no file with this name.")
+    print("Description", error)
+    
+except PermissionError as error:
+    print("You don't have permission to open this file.")
+    print("Description", error)
+
+print("Program finished.")
+
+#Code3
+
+try: 
+    with open("test3.txt", "w") as file:
+        file.write("Hello, World!")
+except PermissionError as erro:
+    print("You don't have permission to write to this file.")
+
+try:
+    with open("test4.txt", "x") as file:
+        file.write("New file content.")
+except FileExistsError as erro:
+    print("The file already exists and cannot be overwritten.")
+
+try:
+    with open("test5.txt", "r") as file:
+        content = file.read()
+except FileNotFoundError as erro:
+    print("The file does not exist.")
+

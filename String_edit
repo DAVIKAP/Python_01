@@ -1,2 +1,217 @@
-arquivo = open("string.txt", "r", encoding='utf-8')
+#code 1
+
+file = open("string.txt", "r", encoding='utf-8')
+
+content = file.read()
+
+print("Type of content:", type(content))
+
+print("Content of the file:")
+
+print(repr(content))
+
+file.close()
+
+#code 2
+
+file = open("string.txt", "r", encoding='utf-8')
+
+content = file.readline()
+
+print("Type of content:", type(content))
+
+print("Content of the file:")
+
+print(repr(content))
+
+next_content = file.readline()
+
+print("Next content of the file:")
+
+print(repr(next_content))
+
+print("Next content of the file:")
+
+print(repr(next_content))
+
+print("Next content of the file:")
+
+print(repr(next_content))
+
+print("Next content of the file:")
+
+print(repr(next_content))
+
+file.close()
+
+#code 3
+
+file = open("string.txt", "r", encoding='utf-8')
+
+content = file.readlines()
+
+print("Type of content:", type(content))
+
+print("Content of the file:")
+
+print(repr(content))
+
+file.close()
+
+
+#code 4
+
+with open("string.txt", "r", encoding='utf-8') as file:
+    count = 0
+    print("Representation of the file:")
+    for line in file:
+        print(repr(line))
+        if line:
+            count += 1
+    print("Total number of the lines:", count)
+
+with open("string.txt", "r", encoding='utf-8') as file:
+    count = 0
+    print("Representation of the file after strip:")
+    for line in file:
+        clean_line = line.strip()
+        print(repr(clean_line))
+        if clean_line:
+            count += 1
+    print("Total number of the lines after strip:", count)
+
+
+#Code 5
+
+with open("string.txt", "r", encoding='utf-8') as file:
+          text = file.read()
+          count = text.count(",")
+          print("Total of 'nos' in the file:", count)
+
+#Code6
+
+sentence1 = "I love to eat meat everyday."
+
+list_of_words = sentence1.split()
+print(list_of_words)
+
+sentence2 = "A big, juice steak is all I                   need."
+list_of_words2 = sentence2.split()
+print(list_of_words2)
+
+sentence3 = "What,do,we,have,to,lunch,today?"
+list_of_words3 = sentence3.split(',')
+print(list_of_words3)
+
+#Code7
+
+sentence = "Talking is cheap, cheap, cheap, show me the code."
+
+print("Contagem direta:", sentence.count('cheap'))
+
+count = 0
+list_of_words = sentence.split()
+for word in list_of_words:
+     if word == "cheap":
+          count += 1
+print("Correct counting:", count)
+
+#Code8
+
+my_list = ["rice", "beans", "pasta"]
+
+text1 = ",".join(my_list)
+with open("text1.txt", "w", encoding='utf-8') as file:
+     file.write(text1)
+
+text2 = "\n".join(my_list)
+with open("text2.txt", "w", encoding='utf-8') as file:
+     file.write(text2)
+
+#Code8
+
+name = "John Doe"
+
+my_string = "Hi, " + name + "."
+my_fstring1 = f"Hi, {name}."
+my_fstring2 = f"Hi, {name.upper()}."
+my_fstring3 = f"How old are you? {10+8}."
+my_fstring4 = f"Number two is higher than number three? {2>3}"
+my_fstring5 = f"Is number two in this list? [4,5,6]? {2 in [4,5,6,]}" 
+
+print(my_string)
+print(my_fstring1)
+print(my_fstring2)
+print(my_fstring3)
+print(my_fstring4)
+print(my_fstring5)
+
+#Code9
+
+from datetime import datetime
+
+fruits = ['apple', 'banana', 'cherry', 'anana', 'grape', 'lemon', 'orange', 'pear', 'strawberry']
+
+for fruit in fruits:
+     my_fruit = f"Name: {fruit:12} - Length: {len(fruit):3}"
+     print(my_fruit)
+
+print()
+
+pi = 3.141592653589793
+my_number = f"Number PI: {pi:.2f}"
+my_number_shifted = f"Number PI shifted: {pi:10.6f}"
+my_number_precise = f"Number PI precise: {pi:.10f}"
+print(my_number)
+print(my_number_shifted)
+print(my_number_precise)
+
+print()
+
+date = datetime.now()
+my_date = f"Today is: {date}."
+my_date_formated = f"Date formated: {date:%d/%m/%y}"
+print(my_date)
+print(my_date_formated)
+
+#Code10
+
+def zenit_polar_replace(text):
+    replacements = [('z','p'), ('e','o'), ('n','l'), ('i','a'), ('t','r'), 
+                    ('Z','P'), ('E','O'), ('N','L'), ('I','A'), ('T','R')]
+
+    for old , new in replacements:
+         text = text.replace(old, new)
+    return text
+
+def main():
+    phrase = "The princess kissed the frog and ate it for dinner."
+    phrase_title = phrase.title()
+
+    words = phrase_title.split()
+
+    coded_words = [zenit_polar_replace(word) for word in words]
+
+    coded_phrase = " ".join(coded_words)
+
+    print("Original phrase: ", phrase)
+    print("Title case phrase: ", phrase_title)
+    print("Coded phrase: ", coded_phrase)
+
+if __name__ == "__main__":
+     main()
+     
+
+
+
+
+     
+
+
+
+
+
+
+
+
 

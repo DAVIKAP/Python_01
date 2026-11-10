@@ -1,0 +1,88 @@
+#Code1
+
+open ("file_to_remove.txt", "w")
+
+import os
+file_to_remove = "file_to_remove.txt"
+
+try:
+    os.remove(file_to_remove)
+    print(f"The file {file_to_remove} has been removed successfully.")
+
+except FileNotFoundError:
+    print(f"The file {file_to_remove} does not exist.")
+
+except Exception as e:
+    print(f"An error occurred while trying to remove the file: {e}")
+
+#Code2
+
+open("file_to_rename.txt", "w")
+
+old_name = "file_to_rename.txt"
+new_name = "renamed_file.txt"
+
+try:
+    os.rename(old_name, new_name)
+    print(f"The file {old_name} has been renamed to {new_name} successfully.")
+
+except FileNotFoundError:
+    print(f"File {old_name} does not exist.")
+
+except Exception as e:
+    print(f"An error has occurred trying to rename the file: {e}")
+    
+#Code3
+
+open("file_to_remove.txt", "w")
+print("File created successfully.")
+
+try:
+    os.remove("file_to_remove.txt")
+    print("File removed successfully.")
+
+except FileNotFoundError as error:
+    print("The file does not exist.")
+    print("Description", error)
+
+except PermissionError as error:
+    print("You do not have permission to delete this file.")
+    print("Description", error)
+
+except IsADirectoryError as error:
+    print("Remove failed. The specified path is a directory, not a file.")
+    print("Description", error)
+
+
+print("Program completed.")
+
+#Code4
+
+open("file_to_rename.txt", "w")
+print("File created successfully.")
+
+import os
+
+try:
+    os.rename("file_to_rename.txt", "renamed_file.txt")
+    print("File renamed successfully.")
+
+except FileNotFoundError as error:
+    print("The file does not exist.")
+    print("Description", error)
+
+except PermissionError as error:
+    print("You do not have permission to rename this file.")
+    print("Description", error)
+
+except FileExistsError as error:
+    print("File already exists.")
+    print("Description", error)
+
+print("Program completed.")
+
+
+
+
+
+

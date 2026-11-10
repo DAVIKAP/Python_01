@@ -1,0 +1,47 @@
+import os
+import shutil
+
+def create_directories(directories):
+    for directory in directories:
+        if not os.path.exists(directory):
+            try:
+                os.mkdir(directory)
+                print(f"Directory {directory} created successfully.")
+            except PermissionError:
+                print(f"You do not have permission to create a directory.")
+            except Exception as e:
+                print(f"Unexpected error occurred while creating {directory}: {e}")
+
+def move_files(directory_origin):
+    for file in os.listdir(directory_origin):
+        file_path = os.path.join(directory_origin, file)
+        if os.path.isfile(file_path):
+            extension = file.split('.')[-1].lower()
+            if extension in ['pdf', 'txt', 'jpg']:
+                directory_destiny = os.path.join(directory_origin, extension)
+                try:
+                    shutil.move(file_path, directory_destiny)
+                    print(f"{file} moved to {directory_destiny}.")
+                except PermissionError:
+                    print(f"You do not have permission to move the file {file}.")
+                except Exception as e:
+                    print(f"Unexpected error while moving the file {file}.")
+            else:
+                print(f"Unsupported file extension.")
+
+def main():
+    directory_work = "directory_work"
+    directories = [os.path.join(directory_work, 'pdf'), 
+                   os.path.join(directory_work, 'txt'), 
+                   os.path.join(directory_work, 'jpg')]
+
+    create_directories(directories)
+
+    move_files(directory_work)
+
+if __name__ == "__main__":
+    main()
+
+    
+
+

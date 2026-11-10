@@ -1,0 +1,54 @@
+import os
+
+def process(file_origin, file_destiny):
+    
+    try:
+
+        with open(file_origin, "r") as origin:
+            content = origin.read()
+        print(f"File {file_origin} read.") 
+        
+    except FileNotFoundError as error:
+        print(f"File {file_origin} do not exist.")
+        print("Description:", error)
+        return
+
+    except PermissionError as error:
+        print(f"You do not have permission to access {file_origin}.")
+        print("Description:", error)
+        return
+
+    except Exception as e:
+        print(f"Houston, we have a problem while trying to read {file_origin}!")
+        print("Description:", e)
+        return
+
+    try:
+
+        with open(file_destiny, "w") as destiny:  
+            destiny.write("Head: File content \n")
+            destiny.write(content)
+        print(f"File {file_destiny} written.")
+
+    except PermissionError as error:
+        print(f"You do not have permission to access {file_destiny}.")
+    
+    except Exception as e:
+        print(f"Houston, we have a problem while trying to read {file_destiny}: {e}")
+        
+def main():
+    DIR_TEST = "DIR_TEST"
+    file_origin = os.path.join(DIR_TEST, "file_origin.txt")
+    file_destiny = os.path.join(DIR_TEST, "file_destiny.txt")
+
+    process(file_origin, file_destiny)
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+
+
+

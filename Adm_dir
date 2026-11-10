@@ -1,0 +1,121 @@
+#Code1
+
+import os
+
+try:
+    os.mkdir("my_directory")
+    print("Directory created successfully.")
+
+except PermissionError as error:
+    print("You do not have permission to create this directory.")
+    print("Description", error)
+
+except FileExistsError as error:
+    print("The file already exists.")
+    print("Description", error)
+
+print("Program completed.")
+
+#Code2
+
+import os
+
+try:
+    os.rmdir("my_directory")
+    print("Directory removed successfully.")
+
+except PermissionError as error:
+    print("You do not have permission to remove this directory.")
+    print("Description", error)
+
+except FileNotFoundError as error:
+    print("The directory does not exist.")
+    print("Description", error)
+
+except OSError as error:
+    print("Another error occurred while trying to remove the directory.")
+    print("Is the directory empty?", error)
+    print("Description", error)
+
+print("Program completed.")
+
+#Code1
+
+import os
+
+try:
+    os.mkdir("my_directory")
+    print("Directory created successfully.")
+
+except PermissionError as error:
+    print("You do not have permission to create this directory.")
+    print("Description", error)
+
+except FileExistsError as error:
+    print("The file already exists.")
+    print("Description", error)
+
+print("Program completed.")
+
+#Code3
+
+import os
+import errno
+
+try:
+    os.rmdir("my_directory.txt")
+    print("Directory removed successfully.")
+
+except OSError as error:
+    print(error.errno)
+    if error.errno == errno.ENOTEMPTY:
+        print("The directory is not empty.")
+    else:
+        print("Unexpected error occurred while trying to remove the directory.")
+        print("Descriotion", error)
+
+print("Program completed.")
+
+#Code1
+
+import os
+
+try:
+    os.mkdir("my_directory")
+    print("Directory created successfully.")
+
+except PermissionError as error:
+    print("You do not have permission to create this directory.")
+    print("Description", error)
+
+except FileExistsError as error:
+    print("The file already exists.")
+    print("Description", error)
+
+print("Program completed.")
+
+#Code4
+
+import os
+
+try:
+    entry = os.scandir("my_directory")
+
+    for object in entry:
+        print(object)
+        print("Nome:", object.name)
+        print("Caminho:", object.path)
+        print("Is a directory:", object.is_dir())
+        print("Is a file:", object.is_file())
+        if object.is_file():
+            print("File size:", object.stat().st.size, "bytes")
+        print("****************************************")
+
+except FileNotFoundError as error:
+    print("The directory does not exist.")
+    print("Description", error)
+
+except PermissionError as error:
+    print("You do not have permission to access this directory.")
+    print("Description", error)
+

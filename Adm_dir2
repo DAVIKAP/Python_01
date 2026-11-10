@@ -1,0 +1,47 @@
+import os
+
+def process_file(file_origin, file_destiny):
+    try:
+        with open(file_origin, "r", encoding='utf-8') as f_origin:
+            content = f_origin.read()
+    except FileNotFoundError:
+        print(f"File {file_origin} not found.")
+        return
+    except PermissionError:
+        print(f"No permission to read {file_origin}.")
+        return
+    except Exception as e:
+        print(f"Unexpected error occurred while reading {file_origin}: {e}")
+        return
+
+    try:
+        with open(file_destiny, "w", encoding='utf-8') as f_destiny:
+            f_destiny.write("Head: File content \n")
+            f_destiny.write(content)
+            print(f"Content written in {file_destiny}.")
+    
+    except PermissionError:
+        print(f"You do not have permission to write in {file_destiny}.")
+    except Exception as e:
+        print(f"Unexpected error occurred while writing in {file_destiny}.")
+
+def main():
+    directory_work = "directory_work"
+    file_origin = os.path.join(directory_work, "file_origin.txt")
+    file_destiny = os.path.join(directory_work, "file_destiny.txt")
+
+    process_file(file_origin, file_destiny)
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+
+
+    
+
+
+        
+
